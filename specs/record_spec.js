@@ -18,7 +18,9 @@ describe('record tests', function(){
     assert.strictEqual(record.title, "Bones");
   });
 
-  it('should have a genre');
+  it('should have a genre', function(){
+    assert.strictEqual(record.genre, "Rock");
+  });
 
   it('should have a price');
 
