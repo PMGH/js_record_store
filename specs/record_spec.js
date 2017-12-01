@@ -10,7 +10,9 @@ describe('record tests', function(){
     record = new Record("Young Guns", "Bones", "Rock", 7.99);
   });
 
-  it('should have an artist');
+  it('should have an artist', function(){
+    assert.strictEqual(record.artist, "Young Guns");
+  });
 
   it('should have a title');
 
