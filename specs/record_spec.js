@@ -26,4 +26,6 @@ describe('record tests', function(){
     assert.strictEqual(record.price, 7.99);
   });
 
+  it('should print out the Record\'s properties as a string');
+
 });
