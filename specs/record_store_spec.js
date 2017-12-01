@@ -9,7 +9,9 @@ describe("record store tests", function(){
     recordStore = new RecordStore("Big Pals", "Glasgow");
   });
 
-  it('should have a Name');
+  it('should have a Name', function(){
+    assert.strictEqual(recordStore.name, "Big Pals");
+  });
 
   it('should have a City');
 
