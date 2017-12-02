@@ -34,4 +34,6 @@ describe("record store tests", function(){
     assert.strictEqual(recordStore.inventory.length, 1);
   });
 
+  it('should be able to return an inventory list');
+
 });
