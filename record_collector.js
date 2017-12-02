@@ -23,9 +23,18 @@ RecordCollector.prototype = {
   },
 
   getCollectionValue: function(){
-    return _.sumBy(this.collection, function(record){
+    var sum = _.sumBy(this.collection, function(record){
       return record.price;
     });
+    return Math.round(sum * 100) / 100;
+  },
+
+  totalValueByGenre: function(genre){
+    var array = _.filter(this.collection, { 'genre': genre });
+    var sum = _.sumBy(array, function(record){
+      return record.price;
+    });
+    return Math.round(sum * 100) / 100;
   }
 
 }
