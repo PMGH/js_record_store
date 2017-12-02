@@ -42,4 +42,6 @@ describe("record store tests", function(){
     assert.strictEqual(recordStore.listInventory(), "Young Guns: Bones\nFoo Fighters: One By One\n");
   });
 
+  it('should be able to sell a record and increase balance as a result');
+
 });
