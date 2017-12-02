@@ -59,4 +59,11 @@ describe("record store tests", function(){
     assert.strictEqual(recordStore.balance, 20007.99);
   });
 
+  it('should be able to report the store finances', function(){
+    recordStore.addRecord(record);
+    recordStore.addRecord(record2);
+    
+    assert.strictEqual(recordStore.getFinances(), "Balance: 20000, Inventory Value: 14.94");
+  });
+
 });
