@@ -43,7 +43,7 @@ RecordCollector.prototype = {
     })[this.collection.length - 1];
   },
 
-  sortByValue: function(order){
+  sortRecordsByValue: function(order){
     return _.orderBy(this.collection, ['price'], [order]);
   }
 

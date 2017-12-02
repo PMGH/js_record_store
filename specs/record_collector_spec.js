@@ -99,8 +99,8 @@ describe("record collector tests", function(){
     var ascExpected = [record3, record2, record, record4];
     var descExpected = [record4, record, record2, record3];
 
-    assert.deepStrictEqual(recordCollector3.sortByValue('asc'), ascExpected);
-    assert.deepStrictEqual(recordCollector3.sortByValue('desc'), descExpected);
+    assert.deepStrictEqual(recordCollector3.sortRecordsByValue('asc'), ascExpected);
+    assert.deepStrictEqual(recordCollector3.sortRecordsByValue('desc'), descExpected);
   });
 
 });
