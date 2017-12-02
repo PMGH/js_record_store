@@ -17,6 +17,14 @@ RecordStore.prototype = {
       inventoryStr = inventoryStr + record.artist + ": " + record.title  + "\n";
     }
     return inventoryStr;
+  },
+
+  sellRecord: function(record){
+    var index = this.inventory.lastIndexOf(record);
+    if (index !== -1){
+      this.inventory.splice(index, 1);
+      this.balance += record.price;
+    }
   }
 
 }
