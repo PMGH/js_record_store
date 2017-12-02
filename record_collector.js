@@ -45,6 +45,18 @@ RecordCollector.prototype = {
 
   sortRecordsByValue: function(order){
     return _.orderBy(this.collection, ['price'], [order]);
+  },
+
+  compareValueTo: function(collector){
+    var thisCollectionVal = this.getCollectionValue();
+    var otherCollectionVal = collector.getCollectionValue();
+    if (thisCollectionVal > otherCollectionVal){
+      return "Your collection is worth £" + (thisCollectionVal - otherCollectionVal) + " more"
+    } else if (otherCollectionVal > thisCollectionVal){
+      return "Your collection is worth £" + (otherCollectionVal - thisCollectionVal) + " less"
+    } else {
+      return "Your collection is worth the same value"
+    }
   }
 
 }

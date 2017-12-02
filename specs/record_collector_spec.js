@@ -101,6 +101,10 @@ describe("record collector tests", function(){
     assert.deepStrictEqual(recordCollector3.sortRecordsByValue('desc'), descExpected);
   });
 
-  it('should be able to compare the value of their collection with another RecordCollector');
+  it('should be able to compare the value of their collection with another RecordCollector', function(){
+    assert.strictEqual(recordCollector3.compareValueTo(recordCollector), "Your collection is worth £34.43 more");
+    assert.strictEqual(recordCollector.compareValueTo(recordCollector3), "Your collection is worth £34.43 less");
+    assert.strictEqual(recordCollector.compareValueTo(recordCollector2), "Your collection is worth the same value");
+  });
 
 });
