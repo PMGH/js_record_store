@@ -88,4 +88,6 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector3.mostValuableRecord(), record4);
   });
 
+  it('should be able to sort their records by value. (ascending or descending)');
+
 });
