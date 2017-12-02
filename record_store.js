@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var RecordStore = function(name, city, balance){
   this.name = name;
   this.city = city;
@@ -32,6 +34,10 @@ RecordStore.prototype = {
     this.inventory.forEach(record => inventoryValue += record.price);
     var inventoryValue = Math.round(inventoryValue * 100) / 100;
     return "Balance: " + this.balance + ", Inventory Value: " + inventoryValue;
+  },
+
+  getRecordsByGenre: function(genre){
+    return _.filter(this.inventory, { 'genre': genre });
   }
 
 }
