@@ -14,6 +14,7 @@ describe("record collector tests", function(){
 
   beforeEach(function(){
     recordCollector = new RecordCollector(20);
+    recordCollector2 = new RecordCollector(0);
     recordStore = new RecordStore("Big Pals", "Glasgow", 20000);
     record = new Record("Young Guns", "Bones", "Rock", 7.99);
     record2 = new Record("Foo Fighters", "One By One", "Rock", 6.95);
@@ -52,6 +53,10 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector.cash, 20);
   });
 
-  it('should not be able to buy a record if they cannot afford it');
+  it('should not be able to buy a record if they cannot afford it', function(){
+    assert.strictEqual(recordCollector2.collection.length, 0);
+    recordCollector2.buyRecord(recordStore, record);
+    assert.strictEqual(recordCollector2.collection.length, 0);
+  });
 
 });
