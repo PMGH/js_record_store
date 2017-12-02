@@ -27,6 +27,7 @@ RecordStore.prototype = {
       this.inventory.splice(index, 1);
       this.balance += record.price;
     }
+    return record;
   },
 
   getFinances: function(){

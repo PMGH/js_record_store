@@ -6,6 +6,8 @@ describe("record store tests", function(){
 
   var recordStore;
   var record;
+  var record2;
+  var record3;
 
   beforeEach(function(){
     recordStore = new RecordStore("Big Pals", "Glasgow", 20000);
