@@ -31,6 +31,14 @@ describe("record collector tests", function(){
     assert.strictEqual(recordStore.inventory.length, 2);
   });
 
-  it('should be able to sell records');
+  it('should be able to sell records', function(){
+    recordCollector.buyRecord(recordStore, record);
+    assert.strictEqual(recordCollector.collection.length, 1);
+    assert.strictEqual(recordStore.inventory.length, 2);
+
+    recordStore.addRecord(recordCollector.sellRecord(recordStore, record));
+    assert.strictEqual(recordCollector.collection.length, 0);
+    assert.strictEqual(recordStore.inventory.length, 3);
+  });
 
 });
