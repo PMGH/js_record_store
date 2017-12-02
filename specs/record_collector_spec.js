@@ -88,6 +88,19 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector3.mostValuableRecord(), record4);
   });
 
-  it('should be able to sort their records by value. (ascending or descending)');
+  it('should be able to sort their records by value. (ascending or descending)', function(){
+    var recordCollector3 = new RecordCollector(100);
+    recordCollector3.buyRecord(recordStore, record);
+    recordCollector3.buyRecord(recordStore, record2);
+    recordCollector3.buyRecord(recordStore, record3);
+    var record4 = new Record("Emancipator", "Seven Seas", "Electornic", 12.99);
+    recordCollector3.buyRecord(recordStore, record4);
+
+    var ascExpected = [record3, record2, record, record4];
+    var descExpected = [record4, record, record2, record3];
+
+    assert.deepStrictEqual(recordCollector3.sortByValue('asc'), ascExpected);
+    assert.deepStrictEqual(recordCollector3.sortByValue('desc'), descExpected);
+  });
 
 });

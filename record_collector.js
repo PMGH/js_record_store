@@ -41,6 +41,10 @@ RecordCollector.prototype = {
     return _.sortBy(this.collection, function(record){
       return record.price;
     })[this.collection.length - 1];
+  },
+
+  sortByValue: function(order){
+    return _.orderBy(this.collection, ['price'], [order]);
   }
 
 }
