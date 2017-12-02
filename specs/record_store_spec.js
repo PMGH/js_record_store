@@ -59,4 +59,6 @@ describe("record store tests", function(){
     assert.strictEqual(recordStore.balance, 20007.99);
   });
 
+  it('should be able to report the store finances');
+
 });
