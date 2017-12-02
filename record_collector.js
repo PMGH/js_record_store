@@ -6,7 +6,7 @@ RecordCollector.prototype = {
 
   buyRecord: function(recordStore, record){
     this.collection.push(recordStore.sellRecord(record));
-  }
+  } 
 
 }
 
