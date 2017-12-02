@@ -67,4 +67,6 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector.getCollectionValue(), 14.49);
   });
 
+  it('should be able to view the total value of all records of a given Genre');
+  
 });
