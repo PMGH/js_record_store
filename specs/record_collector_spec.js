@@ -41,4 +41,6 @@ describe("record collector tests", function(){
     assert.strictEqual(recordStore.inventory.length, 3);
   });
 
+  it('should have cash that increase and decreases with buying and selling');
+
 });
