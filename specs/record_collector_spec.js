@@ -59,4 +59,6 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector2.collection.length, 0);
   });
 
+  it('should be able to view the total value of their collection');
+
 });
