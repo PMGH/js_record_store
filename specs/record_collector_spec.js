@@ -67,4 +67,14 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector.getCollectionValue(), 14.49);
   });
 
+  it('should be able to view the total value of all records of a given Genre', function(){
+    var recordCollector3 = new RecordCollector(100);
+    recordCollector3.buyRecord(recordStore, record);
+    recordCollector3.buyRecord(recordStore, record2);
+    recordCollector3.buyRecord(recordStore, record3);
+
+    assert.strictEqual(recordCollector3.totalValueByGenre("Rock"), 14.94);
+    assert.strictEqual(recordCollector3.totalValueByGenre("Dance"), 6.50);
+  });
+
 });
