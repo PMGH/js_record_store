@@ -10,6 +10,7 @@ describe("record store tests", function(){
   beforeEach(function(){
     recordStore = new RecordStore("Big Pals", "Glasgow", 20000);
     record = new Record("Young Guns", "Bones", "Rock", 7.99);
+    record2 = new Record("Foo Fighters", "One By One", "Rock", 6.95);
   });
 
   it('should have a Name', function(){
@@ -34,6 +35,11 @@ describe("record store tests", function(){
     assert.strictEqual(recordStore.inventory.length, 1);
   });
 
-  it('should be able to return an inventory list');
+  it('should be able to return an inventory list', function(){
+    recordStore.addRecord(record);
+    recordStore.addRecord(record2);
+
+    assert.strictEqual(recordStore.listInventory(), "Young Guns: Bones\nFoo Fighters: One By One\n");
+  });
 
 });
