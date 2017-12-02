@@ -56,7 +56,15 @@ describe("record collector tests", function(){
   it('should not be able to buy a record if they cannot afford it', function(){
     assert.strictEqual(recordCollector2.collection.length, 0);
     recordCollector2.buyRecord(recordStore, record);
+
     assert.strictEqual(recordCollector2.collection.length, 0);
+  });
+
+  it('should be able to view the total value of their collection', function(){
+    recordCollector.buyRecord(recordStore, record);
+    recordCollector.buyRecord(recordStore, record3);
+
+    assert.strictEqual(recordCollector.getCollectionValue(), 14.49);
   });
 
 });

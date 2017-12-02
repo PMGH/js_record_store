@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var RecordCollector = function(cash){
   this.collection = [];
   this.cash = cash;
@@ -18,6 +20,12 @@ RecordCollector.prototype = {
       this.cash += record.price;
       return this.collection.splice(index, 1);
     }
+  },
+
+  getCollectionValue: function(){
+    return _.sumBy(this.collection, function(record){
+      return record.price;
+    });
   }
 
 }
