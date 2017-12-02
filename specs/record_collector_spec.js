@@ -13,7 +13,7 @@ describe("record collector tests", function(){
   var record3;
 
   beforeEach(function(){
-    recordCollector = new RecordCollector();
+    recordCollector = new RecordCollector(20);
     recordStore = new RecordStore("Big Pals", "Glasgow", 20000);
     record = new Record("Young Guns", "Bones", "Rock", 7.99);
     record2 = new Record("Foo Fighters", "One By One", "Rock", 6.95);
@@ -41,6 +41,15 @@ describe("record collector tests", function(){
     assert.strictEqual(recordStore.inventory.length, 3);
   });
 
-  it('should have cash that increase and decreases with buying and selling');
+  it('should have cash that increases and decreases with buying and selling respectively', function(){
+    assert.strictEqual(recordCollector.cash, 20);
+    recordCollector.buyRecord(recordStore, record);
+
+    assert.strictEqual(recordCollector.cash, 12.01);
+    
+    recordStore.addRecord(recordCollector.sellRecord(recordStore, record));
+
+    assert.strictEqual(recordCollector.cash, 20);
+  });
 
 });
