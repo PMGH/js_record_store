@@ -46,10 +46,12 @@ describe("record collector tests", function(){
     recordCollector.buyRecord(recordStore, record);
 
     assert.strictEqual(recordCollector.cash, 12.01);
-    
+
     recordStore.addRecord(recordCollector.sellRecord(recordStore, record));
 
     assert.strictEqual(recordCollector.cash, 20);
   });
+
+  it('should not be able to buy a record if they cannot afford it');
 
 });
