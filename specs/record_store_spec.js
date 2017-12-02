@@ -11,6 +11,7 @@ describe("record store tests", function(){
     recordStore = new RecordStore("Big Pals", "Glasgow", 20000);
     record = new Record("Young Guns", "Bones", "Rock", 7.99);
     record2 = new Record("Foo Fighters", "One By One", "Rock", 6.95);
+    record3 = new Record("Deadmau5", "For Lack Of A Better Name", "Dance", 6.50);
   });
 
   it('should have a Name', function(){
@@ -66,6 +67,13 @@ describe("record store tests", function(){
     assert.strictEqual(recordStore.getFinances(), "Balance: 20000, Inventory Value: 14.94");
   });
 
-  it('should be able to view all Records of a given Genre');
+  it('should be able to view all Records of a given Genre', function(){
+    recordStore.addRecord(record);
+    recordStore.addRecord(record2);
+    recordStore.addRecord(record3);
+
+    assert.deepStrictEqual(recordStore.getRecordsByGenre("Rock"), [record, record2]);
+    assert.deepStrictEqual(recordStore.getRecordsByGenre("Dance"), [record3]);
+  });
 
 });
