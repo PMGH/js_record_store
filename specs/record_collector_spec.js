@@ -77,4 +77,6 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector3.totalValueByGenre("Dance"), 6.50);
   });
 
+  it('should be able to view their most valuable record');
+
 });
