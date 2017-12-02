@@ -103,4 +103,6 @@ describe("record collector tests", function(){
     assert.deepStrictEqual(recordCollector3.sortRecordsByValue('desc'), descExpected);
   });
 
+  it('should be able to compare the value of their collection with another RecordCollector');
+
 });
