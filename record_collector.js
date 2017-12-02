@@ -35,6 +35,12 @@ RecordCollector.prototype = {
       return record.price;
     });
     return Math.round(sum * 100) / 100;
+  },
+
+  mostValuableRecord: function(){
+    return _.sortBy(this.collection, function(record){
+      return record.price;
+    })[this.collection.length - 1];
   }
 
 }

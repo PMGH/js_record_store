@@ -77,4 +77,15 @@ describe("record collector tests", function(){
     assert.strictEqual(recordCollector3.totalValueByGenre("Dance"), 6.50);
   });
 
+  it('should be able to view their most valuable record', function(){
+    var recordCollector3 = new RecordCollector(100);
+    recordCollector3.buyRecord(recordStore, record);
+    recordCollector3.buyRecord(recordStore, record2);
+    recordCollector3.buyRecord(recordStore, record3);
+    var record4 = new Record("Emancipator", "Seven Seas", "Electornic", 12.99);
+    recordCollector3.buyRecord(recordStore, record4);
+
+    assert.strictEqual(recordCollector3.mostValuableRecord(), record4);
+  });
+
 });
