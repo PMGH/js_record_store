@@ -25,6 +25,13 @@ RecordStore.prototype = {
       this.inventory.splice(index, 1);
       this.balance += record.price;
     }
+  },
+
+  getFinances: function(){
+    var inventoryValue = 0;
+    this.inventory.forEach(record => inventoryValue += record.price);
+    var inventoryValue = Math.round(inventoryValue * 100) / 100;
+    return "Balance: " + this.balance + ", Inventory Value: " + inventoryValue;
   }
 
 }
