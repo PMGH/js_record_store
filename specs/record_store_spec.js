@@ -42,4 +42,21 @@ describe("record store tests", function(){
     assert.strictEqual(recordStore.listInventory(), "Young Guns: Bones\nFoo Fighters: One By One\n");
   });
 
+  it('should be able to sell a record and increase balance as a result', function(){
+    recordStore.addRecord(record);
+    recordStore.addRecord(record2);
+    assert.strictEqual(recordStore.inventory.length, 2);
+    assert.strictEqual(recordStore.balance, 20000);
+
+    recordStore.sellRecord(record);
+    assert.strictEqual(recordStore.inventory.length, 1);
+    assert.strictEqual(recordStore.inventory[0], record2);
+    assert.strictEqual(recordStore.balance, 20007.99);
+
+    recordStore.sellRecord(record); // record already sold
+    assert.strictEqual(recordStore.inventory.length, 1);
+    assert.strictEqual(recordStore.inventory[0], record2);
+    assert.strictEqual(recordStore.balance, 20007.99);
+  });
+
 });
