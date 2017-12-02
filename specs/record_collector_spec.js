@@ -7,22 +7,39 @@ var Record = require('../record.js');
 describe("record collector tests", function(){
 
   var recordCollector;
+  var recordCollector2;
+  var recordCollector3;
   var recordStore;
   var record;
   var record2;
   var record3;
+  var record4;
 
   beforeEach(function(){
     recordCollector = new RecordCollector(20);
     recordCollector2 = new RecordCollector(0);
+    recordCollector3 = new RecordCollector(100);
+
     recordStore = new RecordStore("Big Pals", "Glasgow", 20000);
     record = new Record("Young Guns", "Bones", "Rock", 7.99);
     record2 = new Record("Foo Fighters", "One By One", "Rock", 6.95);
     record3 = new Record("Deadmau5", "For Lack Of A Better Name", "Dance", 6.50);
+    record4 = new Record("Emancipator", "Seven Seas", "Electronic", 12.99);
+
+    recordStore.addRecord(record);
+    recordStore.addRecord(record2);
+    recordStore.addRecord(record3);
+
+    recordCollector3.buyRecord(recordStore, record);
+    recordCollector3.buyRecord(recordStore, record2);
+    recordCollector3.buyRecord(recordStore, record3);
+    recordCollector3.buyRecord(recordStore, record4);
+
     recordStore.addRecord(record);
     recordStore.addRecord(record2);
     recordStore.addRecord(record3);
   });
+
 
   it('should be able to buy records', function(){
     assert.strictEqual(recordStore.inventory.length, 3);
@@ -68,39 +85,26 @@ describe("record collector tests", function(){
   });
 
   it('should be able to view the total value of all records of a given Genre', function(){
-    var recordCollector3 = new RecordCollector(100);
-    recordCollector3.buyRecord(recordStore, record);
-    recordCollector3.buyRecord(recordStore, record2);
-    recordCollector3.buyRecord(recordStore, record3);
-
     assert.strictEqual(recordCollector3.totalValueByGenre("Rock"), 14.94);
     assert.strictEqual(recordCollector3.totalValueByGenre("Dance"), 6.50);
   });
 
   it('should be able to view their most valuable record', function(){
-    var recordCollector3 = new RecordCollector(100);
-    recordCollector3.buyRecord(recordStore, record);
-    recordCollector3.buyRecord(recordStore, record2);
-    recordCollector3.buyRecord(recordStore, record3);
-    var record4 = new Record("Emancipator", "Seven Seas", "Electornic", 12.99);
-    recordCollector3.buyRecord(recordStore, record4);
-
     assert.strictEqual(recordCollector3.mostValuableRecord(), record4);
   });
 
   it('should be able to sort their records by value. (ascending or descending)', function(){
-    var recordCollector3 = new RecordCollector(100);
-    recordCollector3.buyRecord(recordStore, record);
-    recordCollector3.buyRecord(recordStore, record2);
-    recordCollector3.buyRecord(recordStore, record3);
-    var record4 = new Record("Emancipator", "Seven Seas", "Electornic", 12.99);
-    recordCollector3.buyRecord(recordStore, record4);
-
     var ascExpected = [record3, record2, record, record4];
     var descExpected = [record4, record, record2, record3];
 
     assert.deepStrictEqual(recordCollector3.sortRecordsByValue('asc'), ascExpected);
     assert.deepStrictEqual(recordCollector3.sortRecordsByValue('desc'), descExpected);
+  });
+
+  it('should be able to compare the value of their collection with another RecordCollector', function(){
+    assert.strictEqual(recordCollector3.compareValueTo(recordCollector), "Your collection is worth £34.43 more");
+    assert.strictEqual(recordCollector.compareValueTo(recordCollector3), "Your collection is worth £34.43 less");
+    assert.strictEqual(recordCollector.compareValueTo(recordCollector2), "Your collection is worth the same value");
   });
 
 });
